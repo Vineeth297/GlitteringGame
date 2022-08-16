@@ -20,7 +20,8 @@ public class Paintable : MonoBehaviour {
     public RenderTexture getSupport() => supportTexture;
     public Renderer getRenderer() => rend;
 
-    void Start() {
+    void Start()
+	{
         maskRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
         maskRenderTexture.filterMode = FilterMode.Bilinear;
 
@@ -37,7 +38,7 @@ public class Paintable : MonoBehaviour {
         rend.material.SetTexture(maskTextureID, extendIslandsRenderTexture);
 
         PaintManager.instance.initTextures(this);
-    }
+	}
 
     void OnDisable(){
         maskRenderTexture.Release();

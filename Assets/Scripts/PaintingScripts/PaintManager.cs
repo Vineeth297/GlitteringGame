@@ -22,6 +22,8 @@ public class PaintManager : Singleton<PaintManager>{
 
     CommandBuffer command;
 
+	public HistogramScript hist;
+	
     public override void Awake(){
         base.Awake();
         
@@ -47,7 +49,8 @@ public class PaintManager : Singleton<PaintManager>{
         command.DrawRenderer(rend, paintMaterial, 0);
 
         Graphics.ExecuteCommandBuffer(command);
-        command.Clear();
+		hist.inputTexture = mask;
+		command.Clear();
     }
 
 
