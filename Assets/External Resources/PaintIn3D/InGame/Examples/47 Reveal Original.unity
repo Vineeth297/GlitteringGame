@@ -235,7 +235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cleaningRadius: 0.05
+  hardness: 0
   totalCleaned: 0
+  multiplier: 1
   minClean: 0.8
   meshSource: {fileID: 462496105}
   isFullyErased: 0
@@ -381,7 +383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9223282086298496735, guid: f43c82fa79085354ba883fd6d09728bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.83
+      value: 19.05
       objectReference: {fileID: 0}
     - target: {fileID: 9223282086298496735, guid: f43c82fa79085354ba883fd6d09728bc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -556,7 +558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1469970198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,7 +755,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cleaningRadius: 0.05
+  hardness: 0
   totalCleaned: 0
+  multiplier: 1
   minClean: 0.8
   meshSource: {fileID: 1753031024}
   isFullyErased: 0
@@ -976,7 +980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781361736}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 7.83, z: 0}
+  m_LocalPosition: {x: 0, y: 19.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -10,27 +10,34 @@ public enum InputState
 }
 public class PlayerInputControl : MonoBehaviour
 {
-	private static PlayerControlBaseState _currentState;
+	public static PlayerInputControl Instance;
+	
+	private PlayerControlBaseState currentState;
 
-	private static readonly WaitingForInputState WaitingForInputState = new WaitingForInputState();
-	private static readonly ApplyingGlueState ApplyingGlueState = new ApplyingGlueState();
-	private static readonly ApplyingColorState ApplyingColorState = new ApplyingColorState();
-	private static readonly BlowingState BlowingState = new BlowingState();
+	protected WaitingForInputState WaitingForInputState = new WaitingForInputState();
+	protected ApplyingGlueState ApplyingGlueState = new ApplyingGlueState();
+	protected ApplyingColorState ApplyingColorState = new ApplyingColorState();
+	protected BlowingState BlowingState = new BlowingState();
 
 	[SerializeField] private GameObject glueLayerObject;
 	[SerializeField] private GameObject glitterLayerObject;
+
+	private void Awake()
+	{
+		Instance = this;
+	}
 	
     private void Start()
 	{
-		_currentState = WaitingForInputState;
+		currentState = WaitingForInputState;
 
-		_currentState.OnStart();
+		currentState.OnStart();
 	}
 
-	public static void SwitchToState(InputState inputState)
+	public void SwitchToState(InputState inputState)
 	{
-		_currentState.OnExit();
-		_currentState = inputState switch
+		currentState.OnExit();
+		currentState = inputState switch
 		{
 			InputState.WaitingState => WaitingForInputState,
 			InputState.GluingState => ApplyingGlueState,
@@ -38,7 +45,7 @@ public class PlayerInputControl : MonoBehaviour
 			InputState.BlowingState => ApplyingColorState,
 			_ => throw new ArgumentOutOfRangeException(nameof(inputState), inputState, null)
 		};
-		_currentState.OnStart();
+		currentState.OnStart();
 	}
 
 	public void SelectGlueLayer()

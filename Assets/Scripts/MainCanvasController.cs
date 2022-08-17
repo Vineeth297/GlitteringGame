@@ -5,16 +5,16 @@ public class MainCanvasController : MonoBehaviour
 	
 	public void SelectGlue()
 	{
-		PlayerInputControl.SwitchToState(InputState.GluingState);
+		PlayerInputControl.Instance.SwitchToState(InputState.GluingState);
 	}
 	
 	public void SelectColor()
 	{
-		PlayerInputControl.SwitchToState(InputState.ColorState);
+		PlayerInputControl.Instance.SwitchToState(InputState.ColorState);
 	}
 	
 	public void SelectBlower()
 	{
-		PlayerInputControl.SwitchToState(InputState.BlowingState);
+		PlayerInputControl.Instance.SwitchToState(InputState.BlowingState);
 	}
 }

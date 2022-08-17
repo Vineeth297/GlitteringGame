@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class ApplyingGlueState : PlayerControlBaseState
 {
-	
 	public override void OnStart()
 	{
 		Debug.Log("In Gluing Start");
-		player.SelectGlueLayer();
+		PlayerInputControl.Instance.SelectGlueLayer();
 	}
 
 	public override void OnUpdate()

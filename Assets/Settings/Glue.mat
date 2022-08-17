@@ -26,7 +26,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3012
+  m_CustomRenderQueue: 3001
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -71,10 +71,10 @@ Material:
     - _FresnelPower: 6
     - _NoiseScale: 0
     - _QueueControl: 0
-    - _QueueOffset: 12
+    - _QueueOffset: 1
     - _ScrollSpeed: 0.005
     m_Colors:
-    - Color_CF34EB0: {r: 0.745283, g: 0.745283, b: 0.745283, a: 0.5803922}
+    - Color_CF34EB0: {r: 0.745283, g: 0.745283, b: 0.745283, a: 0.50980395}
     - _InnerColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
