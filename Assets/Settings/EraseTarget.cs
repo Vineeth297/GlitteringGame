@@ -42,7 +42,7 @@ public class EraseTarget : MonoBehaviour
 				var t = distance / (cleaningRadius * multiplier) ; 
 				var invPos = Mathf.InverseLerp(1,0,_colors[i].r);
 
-				print($"Col.r = {_colors[i].r} t * hardness + invPos = {t * hardness + invPos} t = {t}");
+				//print($"Col.r = {_colors[i].r} t * hardness + invPos = {t * hardness + invPos} t = {t}");
 				
 				_colors[i] = new Color(Mathf.Lerp(_colors[i].r, 0, _colors[i].r + t * hardness + invPos), 0, 0);
 			}

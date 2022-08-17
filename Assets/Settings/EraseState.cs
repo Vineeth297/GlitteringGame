@@ -10,6 +10,7 @@ namespace StateMachine
 		public float raycastDistance = 50f;
 
 		private Camera _camera;
+
 		private void Start()
 		{
 			_camera = Camera.main;

@@ -10,13 +10,15 @@ public enum InputState
 }
 public class PlayerInputControl : MonoBehaviour
 {
-	
 	private static PlayerControlBaseState _currentState;
 
 	private static readonly WaitingForInputState WaitingForInputState = new WaitingForInputState();
 	private static readonly ApplyingGlueState ApplyingGlueState = new ApplyingGlueState();
 	private static readonly ApplyingColorState ApplyingColorState = new ApplyingColorState();
 	private static readonly BlowingState BlowingState = new BlowingState();
+
+	[SerializeField] private GameObject glueLayerObject;
+	[SerializeField] private GameObject glitterLayerObject;
 	
     private void Start()
 	{
@@ -39,4 +41,14 @@ public class PlayerInputControl : MonoBehaviour
 		_currentState.OnStart();
 	}
 
+	public void SelectGlueLayer()
+	{
+		glueLayerObject.SetActive(true);
+	}
+
+	public void SelectGlitterLayer()
+	{
+		glitterLayerObject.SetActive(true);
+	}
+	
 }
