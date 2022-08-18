@@ -67,7 +67,7 @@ public class EraseTarget : MonoBehaviour
 		UpdateMesh();
 		
 		if (isFullyErased) return;
-		transform.parent = null;
+		//transform.parent = null;
 		isFullyErased = true;
 	}
 }
