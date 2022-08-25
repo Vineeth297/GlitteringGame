@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class EraseTarget : MonoBehaviour
+public class BackupEraseScript : MonoBehaviour
 {
 	[SerializeField] private float cleaningRadius = 0.05f;
 	[SerializeField] [Range(0.1f,1)] private float hardness;
@@ -19,12 +21,12 @@ public class EraseTarget : MonoBehaviour
 	// color.red => mud Texture
 	// color.green => clean Texture
 	private void Start()
-    {
-        _mesh = meshSource.mesh;
-        _vertices = _mesh.vertices;
-        _colors = new Color[_vertices.Length];
+	{
+		_mesh = meshSource.mesh;
+		_vertices = _mesh.vertices;
+		_colors = new Color[_vertices.Length];
 
-        for (var i = 0; i < _colors.Length; i++) _colors[i] = Color.red;
+		for (var i = 0; i < _colors.Length; i++) _colors[i] = Color.red;
 		
 		UpdateMesh();
 	}
@@ -65,10 +67,10 @@ public class EraseTarget : MonoBehaviour
 	}
 
 	private void AutoClear()
-    {
-        for (var i = 0; i < _vertices.Length; i++) _colors[i] = !isFullyErased 
-				? Color.Lerp(_colors[i], Color.clear, 2)
-				: Color.Lerp(Color.clear, _colors[i], 2);
+	{
+		for (var i = 0; i < _vertices.Length; i++) _colors[i] = !isFullyErased 
+			? Color.Lerp(_colors[i], Color.clear, 2)
+			: Color.Lerp(Color.clear, _colors[i], 2);
 		
 		UpdateMesh();
 		
