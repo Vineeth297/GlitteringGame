@@ -5,7 +5,7 @@ public class ApplyingColorState : PlayerControlBaseState
 	public override void OnStart()
 	{
 		Debug.Log("In Coloring Start");
-		PlayerInputControl.Instance.SelectGlitterLayer();
+		Player.SelectGlitterLayer();
 	}
 
 	public override void OnUpdate()

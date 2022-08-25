@@ -34,7 +34,7 @@ namespace StateMachine
 			if (!Physics.Raycast(ray.origin, ray.direction, out var hit, raycastDistance)) return;
 			if (!hit.transform.CompareTag("EraseTarget")) return;
 
-			eraseMechanic.EraseAt(hit.point);
+			eraseMechanic.ApplyColorChanges(hit.point);
 
 		}
 	}

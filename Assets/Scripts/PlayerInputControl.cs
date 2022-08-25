@@ -10,8 +10,6 @@ public enum InputState
 }
 public class PlayerInputControl : MonoBehaviour
 {
-	public static PlayerInputControl Instance;
-	
 	private PlayerControlBaseState currentState;
 
 	protected WaitingForInputState WaitingForInputState = new WaitingForInputState();
@@ -22,14 +20,11 @@ public class PlayerInputControl : MonoBehaviour
 	[SerializeField] private GameObject glueLayerObject;
 	[SerializeField] private GameObject glitterLayerObject;
 
-	private void Awake()
-	{
-		Instance = this;
-	}
-	
-    private void Start()
+	private void Start()
 	{
 		currentState = WaitingForInputState;
+
+		_ = new PlayerControlBaseState(this);
 
 		currentState.OnStart();
 	}

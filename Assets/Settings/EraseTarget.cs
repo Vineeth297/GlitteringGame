@@ -29,54 +29,7 @@ public class EraseTarget : MonoBehaviour
 		UpdateMesh();
 	}
 
-	public void EraseAt(Vector3 position)
-    {
-		if (isFullyErased)
-		{
-			ReFill(position);
-			return;
-		}
-		var cleanVertices = 0;
-		
-		for (var i = 0; i < _vertices.Length; i++)
-        {
-            var pos = meshSource.transform.TransformPoint(_vertices[i]);
-            var distance = (pos - position).magnitude;
-			if (distance < cleaningRadius)
-            {
-				var t = distance / (cleaningRadius * multiplier) ; 
-				var invPos = Mathf.InverseLerp(1,0,_colors[i].r);
-
-				//print($"Col.r = {_colors[i].r} t * hardness + invPos = {t * hardness + invPos} t = {t}");
-				
-				_colors[i] = new Color(Mathf.Lerp(_colors[i].r, 0, _colors[i].r + t * hardness + invPos), 0, 0);
-			}
-			if (_colors[i].r < 0.1f) cleanVertices++;
-        }
-		totalCleaned = (float)cleanVertices / _vertices.Length;
-
-		if (totalCleaned >= minClean) AutoClear();
-		
-		UpdateMesh();
-    }
-
-	private void UpdateMesh()
-	{
-		_mesh.colors = _colors;
-		
-	}
-
-	private void AutoClear()
-    {
-        for (var i = 0; i < _vertices.Length; i++) _colors[i] = Color.Lerp(_colors[i], Color.clear, 2);
-		UpdateMesh();
-		
-		if (isFullyErased) return;
-		//transform.parent = null;
-		isFullyErased = true;
-	}
-
-	private void ReFill(Vector3 position)
+	public void ApplyColorChanges(Vector3 position)
 	{
 		var cleanVertices = 0;
 		
@@ -89,16 +42,37 @@ public class EraseTarget : MonoBehaviour
 				var t = distance / (cleaningRadius * multiplier) ; 
 				var invPos = Mathf.InverseLerp(1,0,_colors[i].r);
 
-				//print($"Col.r = {_colors[i].r} t * hardness + invPos = {t * hardness + invPos} t = {t}");
-				
-				_colors[i] = new Color(Mathf.Lerp(_colors[i].r, 0, _colors[i].r + t * hardness + invPos), 0, 0);
+				_colors[i] = new Color(Mathf.Lerp(_colors[i].r, isFullyErased ? 1 : 0, _colors[i].r + t * hardness + invPos), 0, 0);
 			}
 			if (_colors[i].r < 0.1f) cleanVertices++;
 		}
 		totalCleaned = (float)cleanVertices / _vertices.Length;
 
-		if (totalCleaned >= minClean) AutoClear();
+		if (totalCleaned >= minClean)
+		{
+			AutoClear();
+			totalCleaned = 0;
+		}
 		
 		UpdateMesh();
+	}
+
+	private void UpdateMesh()
+	{
+		print( isFullyErased + " = isFullyErased");
+
+		_mesh.colors = _colors;
+	}
+
+	private void AutoClear()
+    {
+        for (var i = 0; i < _vertices.Length; i++) _colors[i] = !isFullyErased 
+				? Color.Lerp(_colors[i], Color.clear, 2)
+				: Color.Lerp(Color.clear, _colors[i], 2);
+		
+		UpdateMesh();
+		
+		if (isFullyErased) return;
+		isFullyErased = true;
 	}
 }

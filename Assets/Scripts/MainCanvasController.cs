@@ -2,19 +2,25 @@ using UnityEngine;
 
 public class MainCanvasController : MonoBehaviour
 {
+	private PlayerInputControl _player;
+
+	private void Start()
+	{
+		_player = GetComponent<PlayerInputControl>();
+	}
 	
 	public void SelectGlue()
 	{
-		PlayerInputControl.Instance.SwitchToState(InputState.GluingState);
+		_player.SwitchToState(InputState.GluingState);
 	}
 	
 	public void SelectColor()
 	{
-		PlayerInputControl.Instance.SwitchToState(InputState.ColorState);
+		_player.SwitchToState(InputState.ColorState);
 	}
 	
 	public void SelectBlower()
 	{
-		PlayerInputControl.Instance.SwitchToState(InputState.BlowingState);
+		_player.SwitchToState(InputState.BlowingState);
 	}
 }

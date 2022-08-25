@@ -1,9 +1,15 @@
-public abstract class PlayerControlBaseState
+public class PlayerControlBaseState
 {
-	public abstract void OnStart();
+	protected static PlayerInputControl Player;
+	protected PlayerControlBaseState() { }
+	public PlayerControlBaseState(PlayerInputControl input)
+	{
+		Player = input;
+	}
 
-	public abstract void OnUpdate();
+	public virtual void OnStart() { }
 
-	public abstract void OnExit();
+	public virtual void OnUpdate() { }
 
+	public virtual void OnExit() { }
 }
