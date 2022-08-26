@@ -6,7 +6,7 @@ namespace StateMachine
 	public class EraseState : MonoBehaviour
 	{
 		public EraseTarget eraseMechanic;
-
+		
 		public float raycastDistance = 50f;
 
 		private Camera _camera;

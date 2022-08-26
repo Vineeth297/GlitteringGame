@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackupEraseScript : MonoBehaviour
+public class Background : MonoBehaviour
 {
 	[SerializeField] private float cleaningRadius = 0.05f;
 	[SerializeField] [Range(0.1f,1)] private float hardness;

@@ -19,7 +19,9 @@ public class PlayerInputControl : MonoBehaviour
 
 	[SerializeField] private GameObject glueLayerObject;
 	[SerializeField] private GameObject glitterLayerObject;
+	[SerializeField] protected internal GameObject backgroundObject;
 
+	
 	private void Start()
 	{
 		currentState = WaitingForInputState;
@@ -37,7 +39,7 @@ public class PlayerInputControl : MonoBehaviour
 			InputState.WaitingState => WaitingForInputState,
 			InputState.GluingState => ApplyingGlueState,
 			InputState.ColorState => ApplyingColorState,
-			InputState.BlowingState => ApplyingColorState,
+			InputState.BlowingState => BlowingState,
 			_ => throw new ArgumentOutOfRangeException(nameof(inputState), inputState, null)
 		};
 		currentState.OnStart();
@@ -46,11 +48,18 @@ public class PlayerInputControl : MonoBehaviour
 	public void SelectGlueLayer()
 	{
 		glueLayerObject.SetActive(true);
+		backgroundObject.SetActive(false);
 	}
 
 	public void SelectGlitterLayer()
 	{
 		glitterLayerObject.SetActive(true);
+		EnableBackground();
+	}
+
+	private void EnableBackground()
+	{
+		backgroundObject.SetActive(true);
 	}
 	
 }
