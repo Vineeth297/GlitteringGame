@@ -35,7 +35,6 @@ namespace StateMachine
 			if (!hit.transform.CompareTag("EraseTarget")) return;
 
 			eraseMechanic.ApplyColorChanges(hit.point);
-
 		}
 	}
 }

@@ -61,5 +61,26 @@ public class PlayerInputControl : MonoBehaviour
 	{
 		backgroundObject.SetActive(true);
 	}
-	
+
+	public void SwitchToNextState()
+	{
+		currentState.OnExit();
+		if (currentState == WaitingForInputState)
+		{
+			//currentState = ApplyingGlueState;
+			MainCanvasController.Inst.ShowGluePanel();
+		}
+		else if (currentState == ApplyingGlueState)
+		{
+			//currentState = ApplyingColorState;
+			MainCanvasController.Inst.ShowColoringPanel();
+		}
+		else if (currentState == ApplyingColorState)
+		{
+			//currentState = BlowingState;
+			MainCanvasController.Inst.ShowBlowingPanel();
+		}
+		currentState.OnStart();
+	}
+
 }

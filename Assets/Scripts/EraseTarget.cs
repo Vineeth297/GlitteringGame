@@ -2,6 +2,8 @@
 
 public class EraseTarget : MonoBehaviour
 {
+	private static PlayerInputControl _player;
+	
 	[SerializeField] private float cleaningRadius = 0.05f;
 	[SerializeField] [Range(0.1f,1)] private float hardness;
 	[SerializeField] private float totalCleaned = 0f;
@@ -19,7 +21,9 @@ public class EraseTarget : MonoBehaviour
 	// color.red => mud Texture
 	// color.green => clean Texture
 	private void Start()
-    {
+	{
+		_player = FindObjectOfType<PlayerInputControl>();
+		
         _mesh = meshSource.mesh;
         _vertices = _mesh.vertices;
         _colors = new Color[_vertices.Length];
@@ -72,6 +76,9 @@ public class EraseTarget : MonoBehaviour
 		
 		if (isColoredFully) return;
 		isColoredFully = true;
+		
+		MainCanvasController.Inst.SlideUpTheMenu();
+		_player.SwitchToNextState();
 	}
 
 	private bool DoneColoring()
