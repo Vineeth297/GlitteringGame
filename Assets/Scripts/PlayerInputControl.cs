@@ -17,9 +17,9 @@ public class PlayerInputControl : MonoBehaviour
 	protected ApplyingColorState ApplyingColorState = new ApplyingColorState();
 	protected BlowingState BlowingState = new BlowingState();
 
-	[SerializeField] private GameObject glueLayerObject;
-	[SerializeField] private GameObject glitterLayerObject;
-	[SerializeField] protected internal GameObject backgroundObject;
+	public GameObject glueLayerObject;
+	public GameObject glitterLayerObject;
+	public GameObject backgroundObject;
 
 	
 	private void Start()
@@ -82,5 +82,7 @@ public class PlayerInputControl : MonoBehaviour
 		}
 		currentState.OnStart();
 	}
+
+	
 
 }

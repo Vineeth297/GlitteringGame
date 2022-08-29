@@ -84,7 +84,7 @@ Material:
     - _Smoothness: 0.13
     - _TexLerp: 0
     m_Colors:
-    - Color_CF34EB0: {r: 1, g: 1, b: 1, a: 0.77254903}
+    - Color_CF34EB0: {r: 1, g: 1, b: 1, a: 1}
     - _InnerColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutColor: {r: 1, g: 1, b: 1, a: 1}
     - _Tiling: {r: 5, g: 5, b: 0, a: 0}

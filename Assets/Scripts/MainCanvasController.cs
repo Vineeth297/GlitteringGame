@@ -16,6 +16,9 @@ public class MainCanvasController : MonoBehaviour
 	[SerializeField] private float slideDownTime = 1f;
 	[SerializeField] private float slideDownDistancInY = 1f;
 
+	[SerializeField] private Color glitterColor = Color.red;
+	private static readonly int MaterialAlbedo = Shader.PropertyToID("Color_CF34EB0");
+
 	private void Awake()
 	{
 		#region Singleton
@@ -40,10 +43,28 @@ public class MainCanvasController : MonoBehaviour
 		SlideDownTheMenu();
 	}
 	
-	public void SelectColor()
+	public void SelectRedColor()
 	{
+		glitterColor = Color.red;
 		_player.SwitchToState(InputState.ColorState);
 		SlideDownTheMenu();
+		AssignGlitterColor();
+	}
+	
+	public void SelectGreenColor()
+	{
+		glitterColor = Color.green;
+		_player.SwitchToState(InputState.ColorState);
+		SlideDownTheMenu();
+		AssignGlitterColor();
+	}
+	
+	public void SelectBlueColor()
+	{
+		glitterColor = Color.blue;
+		_player.SwitchToState(InputState.ColorState);
+		SlideDownTheMenu();
+		AssignGlitterColor();
 	}
 	
 	public void SelectBlower()
@@ -78,5 +99,11 @@ public class MainCanvasController : MonoBehaviour
 		glueMenu.SetActive(false);
 		coloringMenu.SetActive(false);
 		blowingMenu.SetActive(true);
+	}
+
+	private void AssignGlitterColor()
+	{
+		_player.glitterLayerObject.GetComponent<Renderer>().material.SetColor(MaterialAlbedo, glitterColor);
+		_player.backgroundObject.GetComponent<Renderer>().material.SetColor(MaterialAlbedo, glitterColor);
 	}
 }

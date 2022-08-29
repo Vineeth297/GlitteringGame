@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_7BF7E32B:
-        m_Texture: {fileID: 2800000, guid: a2e87a1bbf9763f45963ccb6133f46d5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9171f69e75f4ac14c80d320fbee9a3b9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_AB46060F:
@@ -82,6 +82,7 @@ Material:
     - _QueueOffset: 0
     - _ScrollSpeed: 0.03
     - _Smoothness: 0.13
+    - _TexLerp: 0
     m_Colors:
     - Color_CF34EB0: {r: 1, g: 1, b: 1, a: 0.98039216}
     - _InnerColor: {r: 1, g: 1, b: 1, a: 1}
