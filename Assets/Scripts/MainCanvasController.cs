@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class MainCanvasController : MonoBehaviour
 	
 	[SerializeField] private GameObject glitteringMenu;
 	[SerializeField] private GameObject glueMenu;
+	[SerializeField] private GameObject smudgingMenu;
 	[SerializeField] private GameObject coloringMenu;
 	[SerializeField] private GameObject blowingMenu;
 
@@ -19,6 +21,9 @@ public class MainCanvasController : MonoBehaviour
 	[SerializeField] private Color glitterColor = Color.red;
 	private static readonly int MaterialAlbedo = Shader.PropertyToID("Color_CF34EB0");
 
+	[SerializeField] private GameObject glueDropPrefab;
+	[SerializeField] private List<GameObject> glueDrops;
+	
 	private void Awake()
 	{
 		#region Singleton
@@ -40,6 +45,13 @@ public class MainCanvasController : MonoBehaviour
 	public void SelectGlue()
 	{
 		_player.SwitchToState(InputState.GluingState);
+//		SlideDownTheMenu();
+		ShowSmudgingPanel();
+	}
+
+	public void SelectSmudge()
+	{
+		_player.SwitchToState(InputState.SmudgingState);
 		SlideDownTheMenu();
 	}
 	
@@ -87,16 +99,23 @@ public class MainCanvasController : MonoBehaviour
 	{
 		glueMenu.SetActive(true);
 	}
+
+	public void ShowSmudgingPanel()
+	{
+		glueMenu.SetActive(true);
+		smudgingMenu.SetActive(true);
+	}
 	
 	public void ShowColoringPanel()
 	{
-		glueMenu.SetActive(false);
+		smudgingMenu.SetActive(false);
 		coloringMenu.SetActive(true);
 	}
 	
 	public void ShowBlowingPanel()
 	{
 		glueMenu.SetActive(false);
+		smudgingMenu.SetActive(false);
 		coloringMenu.SetActive(false);
 		blowingMenu.SetActive(true);
 	}
@@ -105,5 +124,21 @@ public class MainCanvasController : MonoBehaviour
 	{
 		_player.glitterLayerObject.GetComponent<Renderer>().material.SetColor(MaterialAlbedo, glitterColor);
 		_player.backgroundObject.GetComponent<Renderer>().material.SetColor(MaterialAlbedo, glitterColor);
+	}
+
+	public void SpawnGlueDrop(Vector3 spawnPos)
+	{
+		var glueDrop = Instantiate(glueDropPrefab, spawnPos, Quaternion.identity);
+		glueDrops.Add(glueDrop);
+		print("here");
+	}
+	
+	public void SmudgeTheGlueDrop(GameObject glueDrop)
+	{
+		var glueDropLossyScale = glueDrop.transform.lossyScale;
+		glueDrop.transform.DOScaleY(glueDropLossyScale.y * 0.1f, 0.5f).OnComplete(() =>
+		{
+			glueDrop.SetActive(false);
+		});
 	}
 }

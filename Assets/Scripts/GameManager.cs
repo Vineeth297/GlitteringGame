@@ -13,12 +13,9 @@ public class GameManager : MonoBehaviour
 	private void Start()
 	{
 		_camera = Camera.main;
-		//_camera.transform.position = camInitialTransform.position;
+		
 		_camera.transform.DOMove(camFinalTransform.position, 3f);
 		_camera.transform.DORotate(Vector3.right * 90f, 3.25f).SetEase(Ease.Linear);
-		//		DOVirtual.DelayedCall(1.5f, ()=> 
-		//_camera.transform.DOLookAt(drawing.position, 3f);
-//		_camera.transform.DORotate(Vector3.right * 90f, 5f);
 	}
 	
 	

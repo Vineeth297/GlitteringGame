@@ -61,7 +61,7 @@ public class Background : MonoBehaviour
 
 	private void UpdateMesh()
 	{
-		print( toBlowTheRest + " = isFullyErased");
+//		print( toBlowTheRest + " = isFullyErased");
 
 		_mesh.colors = _colors;
 	}
